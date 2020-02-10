@@ -9,20 +9,20 @@ public class GymApp {
 
     public static void main(String[] args) {
         /*--create initial persons--*/
-        Person hung = new Person("hung", "ly", 180, new String[]{"lose 10lbs", "get stronger"});
-        Person charlie = new Person("charlie", "delgado", 130, new String[]{"gain 10lbs", "get stronger"});
-        Person paris = new Person("paris", "tyus", 260, new String[]{"lose 10lbs", "get buff"});
+        Person michael = new Person("michael", "jordan", 200, new String[]{"get faster", "get stronger"});
+        Person magic = new Person("magic", "johnson", 230, new String[]{"gain 10lbs", "get stronger"});
+        Person lebron = new Person("lebron", "james", 260, new String[]{"lose 10lbs", "get buffer"});
         /*--create initial memberships--*/
-        Membership member1 = new Membership(hung, GymApp.generateRandomMemberID(), Membership.MembershipTypes.ELITE, 40.00, "monthly", true);
-        Membership member2 = new Membership(charlie, GymApp.generateRandomMemberID(), Membership.MembershipTypes.BASIC, 20.00, "monthly", true);
-        Membership member3 = new Membership(paris, GymApp.generateRandomMemberID(), Membership.MembershipTypes.GOLD, 30.00, "monthly", true);
+        Membership member1 = new Membership(michael, GymApp.generateRandomMemberID(), Membership.MembershipTypes.ELITE, 40.00, "monthly", true);
+        Membership member2 = new Membership(magic, GymApp.generateRandomMemberID(), Membership.MembershipTypes.BASIC, 20.00, "monthly", true);
+        Membership member3 = new Membership(lebron, GymApp.generateRandomMemberID(), Membership.MembershipTypes.GOLD, 30.00, "monthly", true);
         /*--Add initial members--*/
         addMember(member1);
         addMember(member2);
         addMember(member3);
         /*--Add new member without assigning variable to object--*/
         addMember(new Membership(
-                new Person("rachel", "castaneda", 110, new String[]{"get muscle", "do 2 push-ups"}), GymApp.generateRandomMemberID(), Membership.MembershipTypes.ELITE, 400.00, "annual", true)
+                new Person("allen", "iverson", 175, new String[]{"get muscle", "get stronger"}), GymApp.generateRandomMemberID(), Membership.MembershipTypes.ELITE, 400.00, "annual", true)
         );
 
         for (Membership member : GymApp.memberships) {
@@ -46,7 +46,7 @@ public class GymApp {
         System.out.print("Person's information below:\n");
         System.out.printf("First Name: %-15s\n" +
                 "Last Name: %-15s\n" +
-                "Weight: %-3f\n", personObj.getFirstName(), personObj.getLastName(), personObj.getWeight());
+                "Weight: %-3.2f\n", personObj.getFirstName(), personObj.getLastName(), personObj.getWeight());
         System.out.println("Their goals: ");
         for (String goals : personObj.getGoals()) {
             System.out.printf("%-10s ", goals);
@@ -56,7 +56,7 @@ public class GymApp {
 
     public static void printMemberIDMap() {
         for (Membership membership : GymApp.membershipHash.values()) {
-            System.out.printf("First: %-15s Last: %-15s ID: %9d\n", membership.getPerson().getFirstName(), membership.getPerson().getLastName(), membership.getMemberID());
+            System.out.printf("First: %-15s Last: %-15s ID: %09d\n", membership.getPerson().getFirstName(), membership.getPerson().getLastName(), membership.getMemberID());
         }
     }
 
